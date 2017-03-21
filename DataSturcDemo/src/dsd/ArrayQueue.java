@@ -35,7 +35,7 @@ public class ArrayQueue<T> {
 			final T[] resizedQ=(T[]) Array.newInstance(queue.getClass().getComponentType(), queue.length+3);
 			for(int i=0;i<queue.length;i++){
 				resizedQ[i]=queue[head%queue.length];
-				head++;
+				head=(head+1)%queue.length;
 			}
 			resizedQ[queue.length]=data;
 			tail=queue.length+1;
@@ -49,7 +49,7 @@ public class ArrayQueue<T> {
 		else {
 			T tmp=queue[head];
 			queue[head]=null;
-			head++;
+			head=(head+1)%queue.length;
 			return tmp;
 		}
 	}
